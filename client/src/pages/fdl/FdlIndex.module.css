@@ -1,0 +1,17 @@
+.wrapper {
+    width: 100%;
+    min-height: 92vh;
+
+}
+
+.Container {
+    max-width: 80%;
+    margin: .5rem auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .Container {
+        width: 100%;
+        margin: .5rem auto;
+    }
+}

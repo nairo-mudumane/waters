@@ -1,0 +1,154 @@
+:root {
+    --bg-dark: #0f323a;
+    --bg-light: #244a53;
+    --color-red: rgb(218, 1, 41);
+    --color-white: #ffffff;
+    --color-blue-1: #00f2fe;
+    --color-blue-2: #17a2b8;
+    --color-gray-1: #343a40;
+    --color-gray-2: #6c757d;
+    --color-black: #0f0f0f;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .3s ease;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--bg-dark);
+
+    position: fixed;
+    z-index: 99;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--bg-light);
+    border-radius: 6px;
+    width: 8px;
+}
+
+body {
+    background-color: var(--bg-dark) !important;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    background-color: var(--bg-dark) !important;
+    color: var(--color-white);
+
+    font-size: 1rem;
+    line-height: 1.5;
+
+    width: 100%;
+}
+
+p {
+    font-size: .90rem;
+    margin-bottom: .5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: .5rem;
+}
+
+a {
+    color: var(--color-blue-2);
+    font-family: .90rem;
+}
+
+.loader {
+    border: 6px solid var(--color-gray-1);
+    border-radius: 50%;
+    border-right-color: transparent !important;
+
+    padding: 1rem;
+    margin: 1rem .5rem;
+
+    animation: spin 1s linear infinite;
+}
+
+.loader-btn {
+    border-width: 4px;
+    padding: .4rem;
+    margin: 0 .5rem;
+}
+
+.loader-rgba {
+    /* border-image: linear-gradient(to right, var(--color-blue-1), rgba(0, 0, 0, 0.5)); */
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animeLeft {
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: animeLeft 0.5s forwards;
+}
+
+
+.animeRight {
+    transform: translateX(50px);
+    opacity: 0;
+    animation: animeLeft 0.5s forwards;
+}
+
+@keyframes animeLeft {
+    to {
+        transform: initial;
+        opacity: initial;
+    }
+}
+
+.btn {
+    color: var(--color-gray-1);
+    background-color: var(--color-white);
+
+    font-size: .80rem;
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+
+    padding: .5rem 1rem;
+    margin: .5rem 0;
+}
+
+.btn-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn-disabled {
+    background-color: rgba(255, 255, 255, .5);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* login form */
+#loginForm {
+    display: flex;
+    flex-direction: column;
+}

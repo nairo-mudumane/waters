@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "node_modules": true,
+        ".vscode": true,
+        ".gitignore": true,
+        "package.json": true,
+        "package-lock.json": true,
+        "public": true
+    },
+    "rules": {
+        "jsx-a11y/label-has-for": 0
+    }
+}
