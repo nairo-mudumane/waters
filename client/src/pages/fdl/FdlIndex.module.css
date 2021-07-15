@@ -1,17 +1,26 @@
-.wrapper {
-    width: 100%;
-    min-height: 92vh;
+.contentWrapper {
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-}
+    width: 80%;
+    height: 92vh;
+    padding: 0;
+    margin: 0;
 
-.Container {
-    max-width: 80%;
-    margin: .5rem auto;
+    position: relative;
+    top: 8vh;
+    right: 0;
+    left: 20%;
 }
 
 @media only screen and (max-width: 768px) {
-    .Container {
+    .contentWrapper {
         width: 100%;
-        margin: .5rem auto;
+        height: 84vh;
+        top: 0;
+        left: 0;
     }
 }

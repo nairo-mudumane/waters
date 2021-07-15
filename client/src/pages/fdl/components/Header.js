@@ -7,9 +7,11 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerTitle}>
-        <h2># {user.id}</h2>
+        <h2 className={styles.userID}># {user.id}</h2>
       </div>
-      <div className={styles.headerLogo} />
+      <div className={styles.headerLogo}>
+        <span>FDL</span>
+      </div>
     </header>
   );
 }

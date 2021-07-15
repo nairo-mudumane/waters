@@ -15,7 +15,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} end />
             <Route path="pages/login/*" element={<Login />} />
-            <Route path="pages/fdl/*" element={<FdlIndex />} />
+            <Route path="pages/fdl/:id/*" element={<FdlIndex />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />

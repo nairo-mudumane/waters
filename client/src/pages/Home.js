@@ -4,16 +4,13 @@ import Head from '../components/data/Head';
 import styles from './Home.module.css';
 
 export default function Home() {
+  const [load, setLoad] = React.useState(false);
   React.useEffect(() => {
     <Head title="waters" />;
-    window.addEventListener('load', () => {
-      /* check localstorage */
-      setTimeout(() => {
-        const tokenName = localStorage.getItem('username');
-        console.log(tokenName);
-        document.querySelector('#link').click();
-      }, 4000);
-    });
+    setLoad(true);
+    setTimeout(() => {
+      setLoad(false);
+    }, 8000);
   }, []);
 
   return (
@@ -28,19 +25,20 @@ export default function Home() {
           fountains
         </p>
 
-        <Link
-          to="pages/login"
-          id="link"
-          className={`btn ${styles.link}`}
-          style={{ display: 'none' }}
-        >
-          Click to enter
-        </Link>
-
-        <div className={styles.loaderWrapper}>
-          <div className={`loader ${styles.load}`} />
-          <p>Just a secound...</p>
-        </div>
+        {load ? (
+          <div className={styles.loaderWrapper}>
+            <div className={`loader ${styles.load}`} />
+            <p>Just a secound...</p>
+          </div>
+        ) : (
+          <Link
+            to="pages/login"
+            id="link"
+            className={`btn ${styles.link} animeRight`}
+          >
+            Click to enter
+          </Link>
+        )}
       </div>
     </div>
   );

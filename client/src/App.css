@@ -73,6 +73,14 @@ a {
     font-family: .90rem;
 }
 
+input,
+textarea,
+button {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
 .loader {
     border: 6px solid var(--color-gray-1);
     border-radius: 50%;

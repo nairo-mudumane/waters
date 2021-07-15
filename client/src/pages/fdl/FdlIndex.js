@@ -5,6 +5,8 @@ import styles from './FdlIndex.module.css';
 import Welcome from './Welcome';
 import ReadForm from './ReadForm';
 import Client from './client/Client';
+import Header from './components/Header';
+import SideBar from './components/SideBar';
 
 export default function FdlIndex() {
   const user = useParams();
@@ -13,14 +15,14 @@ export default function FdlIndex() {
   return (
     <>
       <Head title={user.id} />
-      <div className={styles.wrapper}>
-        <div className={styles.Container}>
-          <Routes>
-            <Route path="" element={<Welcome />} />
-            <Route path="readform" element={<ReadForm />} />
-            <Route path="client/:clientName/*" element={<Client />} />
-          </Routes>
-        </div>
+      <Header />
+      <SideBar />
+      <div className={`${styles.contentWrapper} animeLeft`}>
+        <Routes>
+          <Route path="" element={<Welcome />} />
+          <Route path="readform" element={<ReadForm />} />
+          <Route path="client/:clientName/*" element={<Client />} />
+        </Routes>
       </div>
     </>
   );

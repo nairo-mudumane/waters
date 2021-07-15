@@ -28,14 +28,19 @@ export default function LoginForm() {
   };
 
   // send form
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     setLoad(true);
     formField.user = user;
     formField.pass = pass;
 
+    setTimeout(() => {
+      window.location.replace(`/pages/fdl/${formField.user}`);
+      setTimeout(() => setLoad(false), 300);
+    }, 3000);
+
     // fetch
-    /* axios({
+    /* await axios({
       method: 'POST',
     }); */
   }
