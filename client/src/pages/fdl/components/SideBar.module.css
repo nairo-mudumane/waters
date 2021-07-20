@@ -27,6 +27,11 @@
     margin: 0;
 }
 
+.ico {
+    color: var(--color-gray-2);
+    font-size: 1.2rem;
+}
+
 .navUL {
     display: block;
 

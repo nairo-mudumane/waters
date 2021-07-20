@@ -3,14 +3,13 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import Head from '../../components/data/Head';
 import styles from './FdlIndex.module.css';
 import Welcome from './Welcome';
-import ReadForm from './ReadForm';
-import Client from './client/Client';
+import Footage from './Footage';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
+import Error from '../data/Error';
 
 export default function FdlIndex() {
   const user = useParams();
-  console.log(user);
 
   return (
     <>
@@ -20,8 +19,8 @@ export default function FdlIndex() {
       <div className={`${styles.contentWrapper} animeLeft`}>
         <Routes>
           <Route path="" element={<Welcome />} />
-          <Route path="readform" element={<ReadForm />} />
-          <Route path="client/:clientName/*" element={<Client />} />
+          <Route path="footage/*" element={<Footage />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </>
