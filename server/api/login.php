@@ -1,3 +1,0 @@
-<?php
-/* validacao de login */
-?>

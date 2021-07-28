@@ -1,0 +1,1 @@
+aqui ficam todos os arquivos php da parte do funcionario de leitura
