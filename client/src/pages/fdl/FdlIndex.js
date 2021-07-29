@@ -7,19 +7,22 @@ import Footage from './Footage';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 import Error from '../data/Error';
+import Debt from './Debt';
 
 export default function FdlIndex() {
   const user = useParams();
 
+  React.useEffect(() => <Head title={user.id} />, [user]);
+
   return (
     <>
-      <Head title={user.id} />
       <Header />
       <SideBar />
       <div className={`${styles.contentWrapper} animeLeft`}>
         <Routes>
-          <Route path="" element={<Welcome />} />
+          <Route path="" element={<Welcome />} end />
           <Route path="footage/*" element={<Footage />} />
+          <Route path="debt/*" element={<Debt />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>

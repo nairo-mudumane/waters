@@ -78,6 +78,9 @@ textarea,
 button {
     border: 0;
     outline: none;
+}
+
+button {
     cursor: pointer;
 }
 

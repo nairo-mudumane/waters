@@ -1,48 +1,38 @@
-/* setTimeout(() => {
-  // window.location.assign(`fdl/${user}`);
-  document.querySelector('#btn').click();
-  setLoad(false);
-}, 4000); */
-/* const url = `https://pokeapi.co/api/v2/pokemon/`; */
-/* try {
-  fetch(url)
-    .then((r) => r.json())
-    .then((data) => console.log(data));
-} catch (e) {
-  console.log('error');
-} */
-
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 
 export default function LoginForm() {
-  const [user, setUser] = React.useState('');
-  const [pass, setPass] = React.useState('');
-  const [load, setLoad] = React.useState(false);
-
-  const formField = {
-    user: '',
-    pass: '',
-    error: null,
-  };
+  const API_PATH = `http://localhost/fontenaria/fontenaria/server/index.php`;
+  const [result, setResult] = React.useState([]);
+  const [load, setLoad] = React.useState(null);
+  const [userName, setUserName] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [inputError, setInputError] = React.useState(false);
 
   // send form
   async function handleSubmit(event) {
     event.preventDefault();
     setLoad(true);
-    formField.user = user;
-    formField.pass = pass;
-
-    setTimeout(() => {
-      window.location.replace(`/pages/fdl/${formField.user}`);
-      setTimeout(() => setLoad(false), 300);
-    }, 3000);
-
-    // fetch
-    /* await axios({
-      method: 'POST',
-    }); */
+    await axios
+      .post(API_PATH)
+      .then((response) => {
+        if (response.status === 200) {
+          setResult(response.data);
+          for (const user of result) {
+            if (user.id_user === userName && user.password === password) {
+              setInputError(false);
+              window.location.replace(`fdl/${user.id_user}`);
+              break;
+            } else {
+              setInputError(true);
+            }
+          }
+        }
+      })
+      .catch((Error) => console.log(Error));
+    setLoad(false);
   }
 
   return (
@@ -63,16 +53,21 @@ export default function LoginForm() {
               id="loginForm"
               className="animeRight"
             >
+              {inputError ? (
+                <p className={`animeLeft danger ${styles.incorrectPass}`}>
+                  Incorrect user or password!
+                </p>
+              ) : null}
               <div className={styles.form_group}>
                 <input
                   type="text"
-                  name="user"
-                  value={user}
-                  placeholder="User"
+                  name="userName"
+                  value={userName}
+                  placeholder="Username"
                   autoComplete="off"
                   required
                   className={`${styles.form_control} animeRight`}
-                  onChange={({ target }) => setUser(target.value)}
+                  onChange={({ target }) => setUserName(target.value)}
                 />
                 <span className={styles.icon}>
                   <i className="fa fa-user" aria-hidden="true" />
@@ -83,12 +78,12 @@ export default function LoginForm() {
                 <input
                   type="password"
                   name="password"
-                  value={pass}
+                  value={password}
                   placeholder="Password"
                   autoComplete="off"
                   required
                   className={`${styles.form_control} animeRight`}
-                  onChange={({ target }) => setPass(target.value)}
+                  onChange={({ target }) => setPassword(target.value)}
                 />
                 <span className={styles.icon}>
                   <i className="fa fa-unlock" aria-hidden="true" />
@@ -109,16 +104,18 @@ export default function LoginForm() {
               </div>
             </form>
             <div className={styles.flexRight}>
-              <Link to="passwordreset" target="__blank" className={styles.link}>
-                Forgot password?
-              </Link>
+              {inputError ? (
+                <Link
+                  to="passwordreset"
+                  target="__blank"
+                  className={styles.link}
+                >
+                  Forgot password?
+                </Link>
+              ) : null}
             </div>
           </div>
         </div>
-
-        {/* <Routes>
-        <Route path="passwordreset" element={<PasswordReset />} />
-      </Routes> */}
       </div>
     </div>
   );

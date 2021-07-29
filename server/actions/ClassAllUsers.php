@@ -1,5 +1,7 @@
 <?php
-include("../connection/ClassMainConnection.php");
+include("./connection/ClassMainConnection.php");
+
+/* C:\xampp\htdocs\fontenaria\fontenaria\server\actions\ClassAllUsers.php */
 
 class ClassAllUsers extends ClassMainConnection {
     public function getAllUsers() {

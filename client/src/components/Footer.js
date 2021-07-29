@@ -5,7 +5,7 @@ import styles from './Footer.module.css';
 export default function Footer() {
   return (
     <footer className={`${styles.footer} animeLeft`}>
-      <p>&copy; 2021 Waters, Inc. KBS Technologies.</p>
+      <p>&copy; 2021 Waters, Inc.</p>
       <Link to="help" className={styles.link}>
         Privacy and Terms
       </Link>

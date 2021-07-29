@@ -3,7 +3,7 @@ import styles from './FootageForm.module.css';
 
 export default function FootageForm() {
   const [clientID, setClientID] = React.useState('');
-  const [load, setLoad] = React.useState(false);
+  const [load, setLoad] = React.useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -11,10 +11,12 @@ export default function FootageForm() {
 
     console.log(clientID);
     setTimeout(() => {
-      /* window.location.replace(`client/${clientID}`); */
+      document.location.assign(`client/${clientID}`);
       setLoad(false);
     }, 2000);
+    console.log(clientID);
   }
+  /* window.location.replace(`fdl/${user.id_user}`); */
 
   return (
     <form
@@ -28,6 +30,7 @@ export default function FootageForm() {
           type="text"
           name="clientID"
           required
+          autoComplete="off"
           value={clientID}
           onChange={({ target }) => setClientID(target.value)}
         />

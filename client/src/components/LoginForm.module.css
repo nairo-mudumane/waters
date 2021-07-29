@@ -73,6 +73,11 @@
     margin-bottom: 1rem;
 }
 
+.incorrectPass {
+    color: var(--color-red);
+    margin: 0;
+}
+
 .form_group {
     width: 100%;
     margin: 1rem auto;
@@ -166,6 +171,8 @@
     .formContainer form {
         position: relative;
     }
+
+
 
     .link {
         margin: .5rem 0;
